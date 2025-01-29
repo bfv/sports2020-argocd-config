@@ -51,14 +51,12 @@ spec:
           periodSeconds: 10
           timeoutSeconds: 2
           failureThreshold: 1
-        readinessProbe:
+        startupProbe:
           httpGet: 
             path: /web/healthz
             port: 8810
-          initialDelaySeconds: 15
-          periodSeconds: 5
-          timeoutSeconds: 2
-          failureThreshold: 5
+          periodSeconds: 2
+          failureThreshold: 30
 
       volumes:
         - name: progress-cfg
