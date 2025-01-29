@@ -42,7 +42,7 @@ spec:
           - name: OE_ENVIRONMENT
             value: "{{ .Values.application.environment }}"
           - name: INSTANCE_ID
-            value: "sports202-v0.0.1"
+            value: "sports2020-v1.0.0"
 
       volumes:
 
