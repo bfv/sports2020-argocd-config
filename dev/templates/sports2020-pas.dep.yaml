@@ -45,7 +45,7 @@ spec:
             value: "1.0.1"
         livenessProbe:
           httpGet: 
-            path: /web/health
+            path: /web/healthz
             port: 8810
           initialDelaySeconds: 60
           periodSeconds: 10
@@ -53,7 +53,7 @@ spec:
           failureThreshold: 1
         readinessProbe:
           httpGet: 
-            path: /web/health
+            path: /web/healthz
             port: 8810
           initialDelaySeconds: 15
           periodSeconds: 5
