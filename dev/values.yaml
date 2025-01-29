@@ -16,7 +16,7 @@ pas:
   name: sports2020-pas
   service: sports2020-pas
   container:
-    image: docker.io/devbfvio/sports2020-pas:12.8.5.1
+    image: docker.io/devbfvio/sports2020-pas:12.8.5.2
     port: 8810
   configname: sports2020-pas-config
 

@@ -50,7 +50,15 @@ spec:
           initialDelaySeconds: 15
           periodSeconds: 10
           timeoutSeconds: 2
-          failureThreshold: 3
+          failureThreshold: 1
+        readinessProbe:
+          httpGet: 
+            path: /health
+            port: 80
+          initialDelaySeconds: 15
+          periodSeconds: 5
+          timeoutSeconds: 2
+          failureThreshold: 5
 
       volumes:
         - name: progress-cfg
