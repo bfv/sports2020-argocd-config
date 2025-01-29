@@ -43,19 +43,19 @@ spec:
             value: "sports2020-v1.0.0"
           - name: APP_VERSION
             value: "1.0.1"
-        # livenessProbe:
-        #   httpGet: 
-        #     path: /health
-        #     port: 80
-        #   initialDelaySeconds: 60
-        #   periodSeconds: 10
-        #   timeoutSeconds: 2
-        #   failureThreshold: 1
+        livenessProbe:
+          httpGet: 
+            path: /health
+            port: 80
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          timeoutSeconds: 2
+          failureThreshold: 1
         readinessProbe:
           httpGet: 
             path: /health
             port: 80
-          initialDelaySeconds: 30
+          initialDelaySeconds: 15
           periodSeconds: 5
           timeoutSeconds: 2
           failureThreshold: 5
