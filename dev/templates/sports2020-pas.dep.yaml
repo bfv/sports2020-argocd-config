@@ -44,7 +44,9 @@ spec:
           - name: APP_VERSION
             value: "1.0.1"
         livenessProbe:
-          httpGet: /health
+          httpGet: 
+            path: /health
+            port: 80
           initialDelaySeconds: 15
           periodSeconds: 10
           timeoutSeconds: 2
