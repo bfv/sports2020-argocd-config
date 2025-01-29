@@ -26,14 +26,12 @@ spec:
             memory: "2048Mi"
             cpu: "1"
         ports:
-        - containerPort: {{ .Values.pas.container.port }}
+          - containerPort: {{ .Values.pas.container.port }}
         
         volumeMounts:
-
           - mountPath: /app/license/
             name: progress-cfg
             readOnly: true
-
           - mountPath: /app/config/
             name: pas-config
             readOnly: true
@@ -43,13 +41,19 @@ spec:
             value: "{{ .Values.application.environment }}"
           - name: INSTANCE_ID
             value: "sports2020-v1.0.0"
+          - name: APP_VERSION
+            value: "1.0.1"
+        livenessProbe:
+          httpGet: /health
+          initialDelaySeconds: 15
+          periodSeconds: 10
+          timeoutSeconds: 2
+          failureThreshold: 3
 
       volumes:
-
         - name: progress-cfg
           secret: 
             secretName: {{ .Values.license.secretname }}
-
         - name: pas-config
           configMap:
             name: {{ .Values.pas.configname }}
