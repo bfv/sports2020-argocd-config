@@ -8,6 +8,14 @@ metadata:
     repoURL: https://github.com/bfv/sports2020-argocd-config.git
     targetRevision: HEAD
     path: dev
+    helm:
+      valueFiles:
+        - values.yaml
+      parameters:
+        - name: application.hostname
+          value: sports2020-argocd.bfv.io
+        - name: application.environment
+          value: argocd
   destination:
     server: https://kubernetes.default.svc
     namespace: sports2020-argocd
@@ -18,4 +26,3 @@ metadata:
     automated:
       selfHeal: true
       prune: true
-      

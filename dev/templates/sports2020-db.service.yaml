@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.db.service }}
+spec:
+  type: ClusterIP
+  selector:
+    app: {{ .Values.application.name }}
+    component: db
+  ports:
+  - port: 10000
+    targetPort: 10000
+    name: brokerport
+  - port: 10001
+    targetPort: 10001
+    name: serverport-0
+  - port: 10002
+    targetPort: 10002
+    name: serverport-1
+  - port: 10003
+    targetPort: 10003
+    name: serverport-2
+  - port: 10004
+    targetPort: 10004
+    name: serverport-3
+  - port: 10005
+    targetPort: 10005
+    name: serverport-4
+  - port: 10006
+    targetPort: 10006
+    name: serverport-5
+  - port: 10007 
+    targetPort: 10007
+    name: serverport-6
+  - port: 10008 
+    targetPort: 10008
+    name: serverport-7
+  - port: 10009 
+    targetPort: 10009
+    name: serverport-8
+  - port: 10010
+    targetPort: 10010
+    name: serverport-9

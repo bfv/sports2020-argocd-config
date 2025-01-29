@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nettoolbox
+spec:
+  containers:
+  - name: nettoolbox
+    image: devbfvio/nettoolbox:latest
+    imagePullPolicy: Always
+    command: [ "/bin/bash", "-c", "--" ]
+    args: [ "while true; do sleep 30; done;" ]

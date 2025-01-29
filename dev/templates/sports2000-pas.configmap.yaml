@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  as.pf: |
+   -db {{ .Values.db.name}} -H {{ .Values.db.service }} -S {{ .Values.db.ports.broker }}
+kind: ConfigMap
+metadata:
+  name: {{ .Values.pas.configname }}

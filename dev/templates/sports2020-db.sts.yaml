@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: "{{ .Values.application.name }}-db"
+  labels:
+    app: {{ .Values.application.name }}
+    component: db
+spec:
+  serviceName: {{ .Values.db.service }}
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.application.name }}
+      component: db
+  template:
+    metadata:
+      name: db-sts
+      labels: 
+        app: {{ .Values.application.name }}
+        component: db
+    spec:
+      containers:
+        - name: "{{ .Values.application.name }}-db-cntnr"
+          image: {{ .Values.db.container.image }}
+          imagePullPolicy: Always
+
+          resources:
+            limits:
+              memory: "1024Mi"
+              cpu: "500m"
+
+          ports:
+            - containerPort: {{ .Values.db.ports.broker }}
+              name: brokerport
+            - containerPort: {{ .Values.db.ports.server }}
+              name: serverport-0
+            - containerPort: {{ add .Values.db.ports.server 1 }}
+              name: serverport-1
+            - containerPort: {{ add .Values.db.ports.server 2 }}
+              name: serverport-2
+            - containerPort: {{ add .Values.db.ports.server 3 }}
+              name: serverport-3
+            - containerPort: {{ add .Values.db.ports.server 4 }}
+              name: serverport-4
+            - containerPort: {{ add .Values.db.ports.server 5 }}
+              name: serverport-5
+            - containerPort: {{ add .Values.db.ports.server 6 }}
+              name: serverport-6
+            - containerPort: {{ add .Values.db.ports.server 7 }}
+              name: serverport-7
+            - containerPort: {{ add .Values.db.ports.server 8 }}
+              name: serverport-8
+            - containerPort: {{ add .Values.db.ports.server 9 }}  
+              name: serverport-9
+          volumeMounts:
+            - name: progress-cfg
+              mountPath: /app/license/
+              readOnly: true
+
+      volumes:
+        - name: progress-cfg
+          secret: 
+            secretName: {{ .Values.license.secretname }}
+

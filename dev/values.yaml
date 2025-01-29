@@ -1,0 +1,24 @@
+application: 
+  name: sports2020
+  # hostname: sports2020.bfv.io
+  # envname: default
+
+db:
+  name: sports2020
+  service: sports2020-db
+  container: 
+    image: docker.io/devbfvio/sports2020-db:12.8.3
+  ports:
+    broker: 10000
+    server: 10001
+
+pas:
+  name: sports2020-pas
+  service: sports2020-pas
+  container:
+    image: docker.io/devbfvio/sports2020-pas:12.8.3.1
+    port: 8810
+  configname: sports2020-pas-config
+
+license:
+  secretname: progress-cfg

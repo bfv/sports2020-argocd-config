@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pas-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.application.name }}
+      component: pas
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.application.name }}
+        component: pas
+    spec:
+      containers:
+      - name: "{{ .Values.application.name }}-pas"
+        image: {{ .Values.pas.container.image }}
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "768Mi"
+            cpu: "250m"
+          limits:
+            memory: "2048Mi"
+            cpu: "1"
+        ports:
+        - containerPort: {{ .Values.pas.container.port }}
+        
+        volumeMounts:
+
+          - mountPath: /app/license/
+            name: progress-cfg
+            readOnly: true
+
+          - mountPath: /app/config/
+            name: pas-config
+            readOnly: true
+
+        env:
+          - name: OE_ENVIRONMENT
+            value: "{{ .Values.application.environment }}"
+        #   - name: INSTANCE_ID
+        #     valueFrom:
+        #       configMapKeyRef:
+        #         name: pas-config
+        #         key: instance-id
+
+      volumes:
+
+        - name: progress-cfg
+          secret: 
+            secretName: {{ .Values.license.secretname }}
+
+        - name: pas-config
+          configMap:
+            name: {{ .Values.pas.configname }}
