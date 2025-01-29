@@ -41,11 +41,8 @@ spec:
         env:
           - name: OE_ENVIRONMENT
             value: "{{ .Values.application.environment }}"
-        #   - name: INSTANCE_ID
-        #     valueFrom:
-        #       configMapKeyRef:
-        #         name: pas-config
-        #         key: instance-id
+          - name: INSTANCE_ID
+            value: "sports202-v0.0.1"
 
       volumes:
 
