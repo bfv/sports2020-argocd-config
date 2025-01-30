@@ -4,14 +4,20 @@ metadata:
   name: {{ .Values.application.name }}-ingressroute
 
 spec:
-  entryPoints:
+  entryPoints:                     
     - web
-  routes:
+  routes:                          
   - kind: Rule
-    match: Host(`{{ .Values.application.hostname }}`) && PathPrefix(`/data`)
-    services:
+    match: Host(`{{ .Values.application.hostname }}`) && PathPrefix(`/data`)   
+    services:                       
       - name: {{ .Values.pas.service }}
         port: 80
     middlewares:
       - name: strip-prefix
       - name: add-web-prefix
+
+  - kind: Rule
+    match: Host(`{{ .Values.application.hostname }}`) && PathPrefix(`/`)   
+    services:                       
+      - name: {{ .Values.webui.service }}
+        port: 80
