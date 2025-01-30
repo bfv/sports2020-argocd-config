@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pas-deployment
+  name: webui-deployment
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: {{ .Values.application.name }}

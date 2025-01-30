@@ -21,7 +21,7 @@ pas:
   configname: sports2020-pas-config
 
 webui:
-  service: sports2020-ui
+  service: sports2020-webui
   container:
     image: docker.io/devbfvio/sports2020-ui:0.0.3
     port: 80
