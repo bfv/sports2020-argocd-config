@@ -7,12 +7,12 @@ spec:
   selector:
     matchLabels:
       app: {{ .Values.application.name }}
-      component: web-ui
+      component: webui
   template:
     metadata:
       labels:
         app: {{ .Values.application.name }}
-        component: web-ui
+        component: webui
     spec:
       containers:
       - name: "{{ .Values.application.name }}-webui"

@@ -6,7 +6,7 @@ spec:
   type: ClusterIP
   selector:
     app: {{ .Values.application.name }}
-    component: web-ui
+    component: webui
   ports:
   - name: http
     port: 80
