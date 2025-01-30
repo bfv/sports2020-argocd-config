@@ -23,7 +23,7 @@ spec:
             memory: "1Mi"
             cpu: "10m"
           limits:
-            memory: "10Mi"
+            memory: "100Mi"
             cpu: "100m"
         ports:
           - containerPort: {{ .Values.webui.container.port }}
