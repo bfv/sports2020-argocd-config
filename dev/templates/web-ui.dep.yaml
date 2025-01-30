@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pas-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: {{ .Values.application.name }}
+      component: web-ui
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.application.name }}
+        component: web-ui
+    spec:
+      containers:
+      - name: "{{ .Values.application.name }}-webui"
+        image: {{ .Values.webui.container.image }}
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "1Mi"
+            cpu: "10m"
+          limits:
+            memory: "10Mi"
+            cpu: "100m"
+        ports:
+          - containerPort: {{ .Values.pas.container.port }}
+        
