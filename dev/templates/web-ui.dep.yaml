@@ -26,5 +26,5 @@ spec:
             memory: "10Mi"
             cpu: "100m"
         ports:
-          - containerPort: {{ .Values.pas.container.port }}
+          - containerPort: {{ .Values.webui.container.port }}
         
