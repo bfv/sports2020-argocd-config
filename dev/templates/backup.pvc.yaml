@@ -1,17 +1,20 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: my-pvc
+  name: backup-pvc
   labels:
     ns: sports2020-argocd
+    type: backup
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 10Gi
-  storageClassName: standard
-  selector:
-    matchLabels:
-      ns: sports2020-argocd
-      type: backup
+  storageClassName: manual
+  volumeMode: Filesystem
+  volumeName: backup-1
+  # selector:
+  #   matchLabels:
+  #     ns: sports2020-argocd
+  #     type: backup
