@@ -68,18 +68,18 @@ spec:
   volumeClaimTemplates:
     - metadata:
         name: backup
-        labels:
-          ns: {{ .Values.application.name }}-argocd
-          type: backup
+        # labels:
+        #   ns: {{ .Values.application.name }}-argocd
+        #   type: backup
       spec:
         accessModes:
           - ReadWriteOnce
         resources:
           requests:
             storage: 10Gi
-        storageClassName: manual
-        selector:
-          matchLabels:
-            ns: {{ .Values.application.name }}-argocd
-            type: backup
+        # storageClassName: manual
+        # selector:
+        #   matchLabels:
+        #     ns: {{ .Values.application.name }}-argocd
+        #     type: backup
 
