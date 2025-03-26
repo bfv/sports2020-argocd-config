@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/bfv/sports2020-argocd-config.git
-    targetRevision: HEAD
+    targetRevision: playground
     path: dev
     helm:
       valueFiles:
