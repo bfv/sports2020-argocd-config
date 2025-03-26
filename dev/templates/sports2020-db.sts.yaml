@@ -56,29 +56,29 @@ spec:
             - name: progress-cfg
               mountPath: /app/license/
               readOnly: true
-            - name: backup
-              mountPath: /app/backup/
-              readOnly: false
+            # - name: backup
+            #   mountPath: /app/backup/
+            #   readOnly: false
 
       volumes:
         - name: progress-cfg
           secret: 
             secretName: {{ .Values.license.secretname }}
 
-  volumeClaimTemplates:
-    - metadata:
-        name: backup
-        # labels:
-        #   ns: {{ .Values.application.name }}-argocd
-        #   type: backup
-      spec:
-        accessModes:
-          - ReadWriteOnce
-        resources:
-          requests:
-            storage: 10Gi
-        storageClassName: sbs-default
-        # selector:
-        #   matchLabels:
-        #     ns: {{ .Values.application.name }}-argocd
-        #     type: backup
+  # volumeClaimTemplates:
+  #   - metadata:
+  #       name: backup
+  #       # labels:
+  #       #   ns: {{ .Values.application.name }}-argocd
+  #       #   type: backup
+  #     spec:
+  #       accessModes:
+  #         - ReadWriteOnce
+  #       resources:
+  #         requests:
+  #           storage: 10Gi
+  #       storageClassName: sbs-default
+  #       # selector:
+  #       #   matchLabels:
+  #       #     ns: {{ .Values.application.name }}-argocd
+  #       #     type: backup
