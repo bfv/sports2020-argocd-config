@@ -5,10 +5,10 @@ metadata:
 
 spec:
   entryPoints:                     
-    - web
+    - websecure
   routes:                          
   - kind: Rule
-    match: Host(`{{ .Values.application.hostname }}`) && PathPrefix(`/data`)   
+    match: PathPrefix(`/data`)
     services:                       
       - name: {{ .Values.pas.service }}
         port: 80
@@ -17,7 +17,7 @@ spec:
       - name: add-web-prefix
 
   - kind: Rule
-    match: Host(`{{ .Values.application.hostname }}`) && PathPrefix(`/`)   
+    match: PathPrefix(`/`)
     services:                       
       - name: {{ .Values.webui.service }}
         port: 80
