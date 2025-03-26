@@ -14,7 +14,7 @@ spec:
         - values.yaml
       parameters:
         - name: application.hostname
-          value: sports2020-argocd.bfv.io
+          value: 51-158-130-95.sslip.io
         - name: application.environment
           value: argocd
   destination:
