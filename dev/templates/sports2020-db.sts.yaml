@@ -56,9 +56,9 @@ spec:
             - name: progress-cfg
               mountPath: /app/license/
               readOnly: true
-            - name: backup
-              mountPath: /app/backup/
-              readOnly: false
+            # - name: backup
+            #   mountPath: /app/backup/
+            #   readOnly: false
 
       volumes:
         - name: progress-cfg
