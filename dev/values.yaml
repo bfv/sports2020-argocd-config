@@ -23,7 +23,7 @@ pas:
 webui:
   service: sports2020-webui
   container:
-    image: docker.io/devbfvio/sports2020-ui:1.2.2
+    image: docker.io/devbfvio/sports2020-ui:1.2.3
     port: 80
 
 license:
