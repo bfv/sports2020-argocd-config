@@ -7,7 +7,7 @@ db:
   name: sports2020
   service: sports2020-db
   container: 
-    image: docker.io/devbfvio/sports2020-db:12.8.6.5
+    image: docker.io/devbfvio/sports2020-db:12.8.6.6-rc1
   ports:
     broker: 10000
     server: 10001
